@@ -18,9 +18,6 @@ export default function Contact() {
     name: '',
     phone: '',
     email: '',
-    service: '',
-    date: '',
-    time: '',
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -38,9 +35,6 @@ export default function Contact() {
         name: '',
         phone: '',
         email: '',
-        service: '',
-        date: '',
-        time: '',
         message: ''
       });
     }, 3000);
@@ -52,23 +46,6 @@ export default function Contact() {
       [e.target.name]: e.target.value
     });
   };
-
-  const services = [
-    'Первинна консультація',
-    'Повторна консультація',
-    'Профілактичний огляд',
-    'Кардіологічна консультація',
-    'Ендокринологічна консультація',
-    'Вакцинація',
-    'Онлайн консультація',
-    'Інше'
-  ];
-
-  const timeSlots = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30'
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -155,68 +132,13 @@ export default function Contact() {
                 </div>
                 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-warm-gray mb-2">
-                    Оберіть послугу *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
-                  >
-                    <option value="">Оберіть послугу</option>
-                    {services.map((service, index) => (
-                      <option key={index} value={service}>{service}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-warm-gray mb-2">
-                      Бажана дата *
-                    </label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      required
-                      value={formData.date}
-                      onChange={handleChange}
-                      min={new Date().toISOString().split('T')[0]}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="time" className="block text-sm font-medium text-warm-gray mb-2">
-                      Бажаний час *
-                    </label>
-                    <select
-                      id="time"
-                      name="time"
-                      required
-                      value={formData.time}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
-                    >
-                      <option value="">Оберіть час</option>
-                      {timeSlots.map((time, index) => (
-                        <option key={index} value={time}>{time}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                
-                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-warm-gray mb-2">
-                    Додаткова інформація
+                    Додаткова інформація *
                   </label>
                   <textarea
                     id="message"
                     name="message"
+                    required
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
