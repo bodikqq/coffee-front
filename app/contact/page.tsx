@@ -1,23 +1,16 @@
-'use client';
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Calendar,
-  Send,
-  CheckCircle
-} from 'lucide-react';
+import ContactForm from './ContactForm';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
+    service: '',
+    date: '',
+    time: '',
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,6 +28,9 @@ export default function Contact() {
         name: '',
         phone: '',
         email: '',
+        service: '',
+        date: '',
+        time: '',
         message: ''
       });
     }, 3000);
@@ -47,10 +43,27 @@ export default function Contact() {
     });
   };
 
+  const services = [
+    'Первинна консультація',
+    'Повторна консультація',
+    'Профілактичний огляд',
+    'Кардіологічна консультація',
+    'Ендокринологічна консультація',
+    'Вакцинація',
+    'Онлайн консультація',
+    'Інше'
+  ];
+
+  const timeSlots = [
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+    '12:00', '12:30', '14:00', '14:30', '15:00', '15:30',
+    '16:00', '16:30', '17:00', '17:30'
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-beige/20">
         <div className="max-w-4xl mx-auto text-center">
@@ -58,7 +71,7 @@ export default function Contact() {
             Зв'язок з нами
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Запишіться на прийом або зв'яжіться з нами для отримання консультації. 
+            Запишіться на прийом або зв'яжіться з нами для отримання консультації.
             Ми завжди готові допомогти вам у питаннях здоров'я.
           </p>
         </div>
@@ -132,13 +145,68 @@ export default function Contact() {
                 </div>
                 
                 <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-warm-gray mb-2">
+                    Оберіть послугу *
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
+                  >
+                    <option value="">Оберіть послугу</option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service}>{service}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="date" className="block text-sm font-medium text-warm-gray mb-2">
+                      Бажана дата *
+                    </label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      required
+                      value={formData.date}
+                      onChange={handleChange}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="time" className="block text-sm font-medium text-warm-gray mb-2">
+                      Бажаний час *
+                    </label>
+                    <select
+                      id="time"
+                      name="time"
+                      required
+                      value={formData.time}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
+                    >
+                      <option value="">Оберіть час</option>
+                      {timeSlots.map((time, index) => (
+                        <option key={index} value={time}>{time}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-warm-gray mb-2">
-                    Додаткова інформація *
+                    Додаткова інформація
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    required
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
@@ -164,11 +232,10 @@ export default function Contact() {
           
           {/* Contact Information */}
           <div className="space-y-8">
-            {/* Contact Details */}
             <div className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-bold text-warm-gray mb-6">Контактна інформація</h2>
-              
               <div className="space-y-6">
+                {/* Phone */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-sage" />
@@ -179,7 +246,7 @@ export default function Contact() {
                     <p className="text-sm text-gray-500">Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</p>
                   </div>
                 </div>
-                
+                {/* Email */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-sage" />
@@ -190,7 +257,7 @@ export default function Contact() {
                     <p className="text-sm text-gray-500">Відповідаємо протягом 24 годин</p>
                   </div>
                 </div>
-                
+                {/* Address */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-sage" />
@@ -204,11 +271,10 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            
+
             {/* Working Hours */}
             <div className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-bold text-warm-gray mb-6">Години роботи</h2>
-              
               <div className="space-y-3">
                 <div className="flex items-center justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Понеділок - П'ятниця</span>
@@ -223,21 +289,20 @@ export default function Contact() {
                   <span className="font-semibold text-red-500">Вихідний</span>
                 </div>
               </div>
-              
               <div className="mt-6 p-4 bg-beige/30 rounded-lg">
                 <div className="flex items-start space-x-3">
                   <Clock className="w-5 h-5 text-sage flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-warm-gray">Екстрені випадки</p>
                     <p className="text-sm text-gray-600">
-                      У невідкладних випадках телефонуйте за номером +380 67 123 45 67. 
+                      У невідкладних випадках телефонуйте за номером +380 67 123 45 67.
                       Ми організуємо прийом поза робочими годинами.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Map Placeholder */}
             <div className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-bold text-warm-gray mb-6">Як нас знайти</h2>
@@ -265,25 +330,12 @@ export default function Contact() {
             <h2 className="text-3xl font-bold text-warm-gray mb-4">Часті питання</h2>
             <p className="text-lg text-gray-600">Відповіді на найпоширеніші запитання</p>
           </div>
-          
           <div className="space-y-6">
             {[
-              {
-                question: 'Як швидко можна записатися на прийом?',
-                answer: 'Зазвичай ми можемо запропонувати прийом протягом 1-3 днів. У невідкладних випадках організовуємо прийом в день звернення.'
-              },
-              {
-                question: 'Чи потрібно приносити медичну картку?',
-                answer: 'Бажано мати з собою попередні аналізи та висновки лікарів, якщо такі є. Це допоможе краще зрозуміти вашу медичну історію.'
-              },
-              {
-                question: 'Скільки триває консультація?',
-                answer: 'Первинна консультація триває 60 хвилин, повторна - 45 хвилин. Ми не поспішаємо і приділяємо достатньо часу кожному пацієнту.'
-              },
-              {
-                question: 'Чи можна скасувати або перенести прийом?',
-                answer: 'Так, ви можете скасувати або перенести прийом за 24 години до призначеного часу без додаткових витрат.'
-              }
+              { question: 'Як швидко можна записатися на прийом?', answer: 'Зазвичай ми можемо запропонувати прийом протягом 1-3 днів. У невідкладних випадках організовуємо прийом в день звернення.' },
+              { question: 'Чи потрібно приносити медичну картку?', answer: 'Бажано мати з собою попередні аналізи та висновки лікарів, якщо такі є. Це допоможе краще зрозуміти вашу медичну історію.' },
+              { question: 'Скільки триває консультація?', answer: 'Первинна консультація триває 60 хвилин, повторна - 45 хвилин. Ми не поспішаємо і приділяємо достатньо часу кожному пацієнту.' },
+              { question: 'Чи можна скасувати або перенести прийом?', answer: 'Так, ви можете скасувати або перенести прийом за 24 години до призначеного часу без додаткових витрат.' }
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-warm-gray mb-2">{faq.question}</h3>
