@@ -54,25 +54,16 @@ export default function ContactForm() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        // 1. Build a JS Date from your date + time inputs
         const appointment = new Date(`${formData.date}T${formData.time}`);
 
-        // 2. Format it as an ISO string (e.g. "2025-07-11T09:30:00.000Z")
-        //    If your backend expects a MySQL‐style DATETIME (no "Z"), you can strip off the Z:
         const isoWithZ = appointment.toISOString();
-        const mysqlDatetime = isoWithZ.slice(0, 19).replace('T', ' ');
-        //    → "2025-07-11 09:30:00"
 
-        // 3. Send that instead of the raw date/time fields:
         const payload = {
             name: formData.name,
             phone: formData.phone,
             email: formData.email,
             serviceName: formData.service,
-            // either:
             date: isoWithZ,
-            // or, for a no-timezone DATETIME column:
-            // datetime: mysqlDatetime,
             message: formData.message,
         };
 

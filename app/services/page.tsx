@@ -1,62 +1,15 @@
+// app/services/page.tsx
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
+import ServicesList from './ServicesList';
 
-export default function Services() {
-  const serviceBlocks = [
-    {
-      title: 'Комбустіологія',
-      services: [
-        'Лікування термічних та хімічних опіків',
-        'Лікування хронічних трофічних виразок та хронічних тривалонезаживаючих ран',
-        'Лікування великих гострих дефектів м\'язів, кісток з поверненням активної функції верхньої та нижньої кінцівок'
-      ]
-    },
-    {
-      title: 'Хірургія кисті та стопи',
-      services: [
-        'Лікування травм кисті та стопи: шов сухожилля, шов периферичних нервів, шов судин малого калібру',
-        'Пластика сухожиль, судин, нервів кінцівок',
-        'Корекція застарілих пошкоджень сухожилль і нервів',
-        'Видалення сторонніх тіл',
-        'Тунельні синдроми зап\'ястя, стенозуючі лігаментити',
-        'Контрактура Дюпюітрена',
-        'Вроджені і набуті деформації кисті та стопи',
-        'Лікування переломів кісток кисті',
-        'Лікування ревматоїдного артриту (синовектомія, реконструкція сухожилля, реконструкція суглобів, протезування, артродез)',
-        'Корекція «ліктя тенісиста»',
-        'Лікування Hallux Valgus',
-        'Лікування молоткоподібної деформації пальців стопи',
-        'Реконструкція Ахіллового сухожилля'
-      ]
-    },
-    {
-      title: 'Пластична хірургія',
-      services: [
-        'Лікування патологічних рубців та рубцевих деформацій після травм, опіків',
-        'Усунення великих дефектів тканин голови та обличчя',
-        'Лікування контрактур суглобів',
-        'Корекція вродженої чи набутої деформації вушних раковин (отопластика)',
-        'Корекція вродженої, вікової чи набутої деформації повік (блефаропластика)',
-        'Видалення шкірно-жирового фартуха передньої черевної стінки (абдоменопластика)',
-        'Видалення новоутворень шкіри та підшкірної клітковини будь-якої локалізації'
-      ]
-    },
-    {
-      title: 'Регенеративна терапія',
-      services: [
-        'PRP-терапія (плазмотерапія) суглобів, шкіри обличчя, волосистої частини голови',
-        'Реабілітація пацієнтів після перенесених травм',
-        'Лікування суглобів мікрофрагментованою власною жировою тканиною'
-      ]
-    }
-  ];
-
+export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-beige/20">
         <div className="max-w-4xl mx-auto text-center">
@@ -70,33 +23,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Blocks */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="space-y-12">
-            {serviceBlocks.map((block, blockIndex) => (
-              <div key={blockIndex} className="bg-white rounded-xl shadow-sm p-8">
-                <h2 className="text-2xl font-bold text-warm-gray mb-8 pb-4 border-b-2 border-sage/20">
-                  {block.title}
-                </h2>
-                <div className="space-y-4">
-                  {block.services.map((service, serviceIndex) => (
-                    <div 
-                      key={serviceIndex} 
-                      className="flex items-start space-x-4 py-3 px-4 rounded-lg bg-beige/10 hover:bg-beige/20 transition-colors duration-200"
-                    >
-                      <div className="w-2 h-2 bg-sage rounded-full flex-shrink-0 mt-3"></div>
-                      <p className="text-gray-700 leading-relaxed text-lg">
-                        {service}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Dynamic Services List */}
+      <ServicesList />
 
       {/* Additional Info */}
       <section className="py-16 bg-beige/30">
