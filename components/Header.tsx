@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Phone, MapPin } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navigation = [
     { name: 'Головна', href: '/' },
@@ -37,7 +39,11 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-warm-gray hover:text-coffee transition-colors duration-200 font-medium"
+                className={`transition-colors duration-200 font-medium ${
+                  pathname === item.href 
+                    ? 'text-coffee' 
+                    : 'text-warm-gray hover:text-coffee'
+                }`}
               >
                 {item.name}
               </Link>
@@ -73,7 +79,11 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-warm-gray hover:text-coffee transition-colors duration-200 font-medium py-2"
+                  className={`transition-colors duration-200 font-medium py-2 ${
+                    pathname === item.href 
+                      ? 'text-coffee' 
+                      : 'text-warm-gray hover:text-coffee'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
