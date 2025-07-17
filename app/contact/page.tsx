@@ -1,8 +1,9 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from './ContactForm';
-import { Mail, MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 import PhoneWithCopy from '@/components/PhoneWithCopy';
+import EmailWithCopy from '@/components/EmailWithCopy';
 
 export default function ContactPage() {
   return (
@@ -55,11 +56,20 @@ export default function ContactPage() {
                 {/* Email */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-sage" />
+                    <EmailWithCopy 
+                      email="info@petrenko-clinic.ua" 
+                      className="text-sage"
+                      showEmail={false}
+                      size="md"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-warm-gray mb-1">Email</h3>
-                    <p className="text-gray-600">info@petrenko-clinic.ua</p>
+                    <EmailWithCopy 
+                      email="info@petrenko-clinic.ua" 
+                      className="text-gray-600"
+                      size="md"
+                    />
                     <p className="text-sm text-gray-500">Відповідаємо протягом 24 годин</p>
                   </div>
                 </div>

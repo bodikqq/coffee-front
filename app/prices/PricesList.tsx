@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Clock, Euro, BatteryWarning as Hryvnia } from 'lucide-react';
+import { Euro, BatteryWarning as Hryvnia } from 'lucide-react';
 
 type Service = {
   id: number;
@@ -67,55 +67,48 @@ export default function PricesList() {
       <div className="max-w-5xl mx-auto">
         <div className="space-y-12">
           {Object.entries(grouped).map(([category, items]) => (
-            <div key={category} className="bg-white rounded-xl shadow-sm p-8">
+            <div key={category} id={category} className="bg-white rounded-xl shadow-sm p-8 scroll-mt-24">
               <h2 className="text-2xl font-bold text-warm-gray mb-8 pb-4 border-b-2 border-sage/20">
                 {category}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
                 {items.map(item => (
                   <div
                     key={item.id}
-                    className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition-shadow"
+                    className="flex items-start justify-between py-4 px-6 rounded-lg bg-beige/10 hover:bg-beige/20 transition-colors duration-200"
                   >
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg font-semibold text-warm-gray flex-1 pr-4">
-                        {item.name}
-                      </h3>
-                      <div className="text-right flex-shrink-0">
-                        {item.priceUah && (
-                          <div className="flex items-center text-xl font-bold text-coffee mb-1">
-                            <span>{item.priceUah}</span>
-                            <Hryvnia className="w-4 h-4 ml-1" />
-                          </div>
-                        )}
-                        {item.priceEur && (
-                          <div className="flex items-center text-sm text-gray-500">
-                            <span>{item.priceEur}</span>
-                            <Euro className="w-3 h-3 ml-1" />
-                          </div>
-                        )}
-                        {!item.priceUah && !item.priceEur && (
-                          <div className="text-sm text-gray-500">
-                            За домовленістю
-                          </div>
+                    <div className="flex items-start space-x-4 flex-1">
+                      <div className="w-2 h-2 bg-sage rounded-full flex-shrink-0 mt-3" />
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-warm-gray mb-1">
+                          {item.name}
+                        </h3>
+                        {item.description && (
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {item.description}
+                          </p>
                         )}
                       </div>
                     </div>
                     
-                    {item.description && (
-                      <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Clock className="w-4 h-4 mr-1" />
-                        <span>Консультація</span>
-                      </div>
-                      <button className="text-sage font-medium hover:text-coffee transition-colors text-sm">
-                        Записатися →
-                      </button>
+                    <div className="text-right flex-shrink-0 ml-6">
+                      {item.priceUah && (
+                        <div className="flex items-center text-xl font-bold text-coffee mb-1">
+                          <span>{item.priceUah}</span>
+                          <Hryvnia className="w-4 h-4 ml-1" />
+                        </div>
+                      )}
+                      {item.priceEur && (
+                        <div className="flex items-center text-sm text-gray-500">
+                          <span>{item.priceEur}</span>
+                          <Euro className="w-3 h-3 ml-1" />
+                        </div>
+                      )}
+                      {!item.priceUah && !item.priceEur && (
+                        <div className="text-sm text-gray-500">
+                          За домовленістю
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

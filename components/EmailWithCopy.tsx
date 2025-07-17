@@ -1,31 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Copy, Check } from 'lucide-react';
+import { Mail, Copy, Check } from 'lucide-react';
 
-interface PhoneWithCopyProps {
-  phoneNumber: string;
+interface EmailWithCopyProps {
+  email: string;
   className?: string;
-  showNumber?: boolean;
+  showEmail?: boolean;
   size?: 'sm' | 'md' | 'lg';
 }
 
-export default function PhoneWithCopy({ 
-  phoneNumber, 
+export default function EmailWithCopy({ 
+  email, 
   className = '', 
-  showNumber = true,
+  showEmail = true,
   size = 'md'
-}: PhoneWithCopyProps) {
+}: EmailWithCopyProps) {
   const [isCopied, setIsCopied] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(phoneNumber);
+      await navigator.clipboard.writeText(email);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy phone number:', err);
+      console.error('Failed to copy email:', err);
     }
   };
 
@@ -50,11 +50,11 @@ export default function PhoneWithCopy({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="flex items-center space-x-2 hover:text-coffee transition-colors duration-200 relative"
-        title={isHovered ? 'Натисніть, щоб скопіювати' : phoneNumber}
+        title={isHovered ? 'Натисніть, щоб скопіювати' : email}
       >
         <div className="relative flex items-center space-x-2">
           <div className={`transition-all duration-300 ${isCopied ? 'opacity-100' : isHovered ? 'opacity-0' : 'opacity-100'}`}>
-            <Phone className={iconSizes[size]} />
+            <Mail className={iconSizes[size]} />
           </div>
           <div className={`absolute left-0 transition-all duration-300 ${isHovered && !isCopied ? 'opacity-100' : 'opacity-0'}`}>
             <Copy className={iconSizes[size]} />
@@ -64,10 +64,10 @@ export default function PhoneWithCopy({
           </div>
         </div>
         
-        {showNumber && (
+        {showEmail && (
           <div className="relative">
             <span className={`${textSizes[size]} transition-all duration-300 ${isCopied ? 'opacity-0' : isHovered ? 'opacity-0' : 'opacity-100'}`}>
-              {phoneNumber}
+              {email}
             </span>
             <span className={`absolute left-0 top-0 ${textSizes[size]} font-medium transition-all duration-300 ${isHovered && !isCopied ? 'opacity-100' : 'opacity-0'}`}>
               Копіювати

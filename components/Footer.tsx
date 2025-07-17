@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Mail, MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 import PhoneWithCopy from './PhoneWithCopy';
+import EmailWithCopy from './EmailWithCopy';
 
 export default function Footer() {
   return (
@@ -17,8 +18,11 @@ export default function Footer() {
                 size="md"
               />
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-sage" />
-                <span>info@petrenko-clinic.ua</span>
+                <EmailWithCopy 
+                  email="info@petrenko-clinic.ua" 
+                  className="text-white space-x-3"
+                  size="md"
+                />
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-sage" />

@@ -145,7 +145,7 @@ export default function Results() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-warm-gray mb-4">Результати лікування</h2>
-            <p className="text-lg text-gray-600">Фото до та після лікування наших пацієнтів</p>
+            <p className="text-lg text-gray-600">Результати до та після лікування наших пацієнтів</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -154,68 +154,53 @@ export default function Results() {
                 title: 'Лікування опіків',
                 category: 'Комбустіологія',
                 duration: '3 місяці лікування',
-                beforeImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=600'
               },
               {
                 title: 'Хірургія кисті',
                 category: 'Хірургія кисті та стопи',
                 duration: '2 місяці реабілітації',
-                beforeImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600'
               },
               {
                 title: 'Пластична операція',
                 category: 'Пластична хірургія',
                 duration: '6 місяців відновлення',
-                beforeImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=600'
               },
               {
                 title: 'Регенеративна терапія',
                 category: 'Регенеративна терапія',
                 duration: '4 місяці лікування',
-                beforeImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=600'
               },
               {
                 title: 'Відновлення після травми',
                 category: 'Хірургія кисті та стопи',
                 duration: '5 місяців реабілітації',
-                beforeImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600'
               },
               {
                 title: 'Комплексне лікування',
                 category: 'Комбустіологія',
                 duration: '8 місяців лікування',
-                beforeImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300',
-                afterImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300'
+                combinedImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=600'
               }
             ].map((result, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                 <div className="relative">
-                  <div className="grid grid-cols-2">
-                    <div className="relative">
-                      <img
-                        src={result.beforeImage}
-                        alt="До лікування"
-                        className="w-full h-48 object-cover"
-                      />
-                      <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-medium">
-                        До
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={result.afterImage}
-                        alt="Після лікування"
-                        className="w-full h-48 object-cover"
-                      />
-                      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
-                        Після
-                      </div>
-                    </div>
+                  <img
+                    src={result.combinedImage}
+                    alt={`${result.title} - результати лікування`}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="absolute top-4 left-4 flex space-x-2">
+                    <span className="bg-warm-gray/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-medium shadow-lg">
+                      До
+                    </span>
+                    <span className="bg-sage/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-medium shadow-lg">
+                      Після
+                    </span>
                   </div>
                 </div>
                 <div className="p-6">
