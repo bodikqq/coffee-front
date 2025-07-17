@@ -154,14 +154,23 @@ export default function Results() {
                 <h3 className="text-xl font-semibold text-warm-gray mb-3">{story.title}</h3>
                 <p className="text-gray-600 mb-4">{story.description}</p>
                 
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                    <span className="text-sm font-medium text-red-700">До:</span>
-                    <span className="text-sm text-red-600">{story.beforeAfter.before}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                    <span className="text-sm font-medium text-green-700">Після:</span>
-                    <span className="text-sm text-green-600">{story.beforeAfter.after}</span>
+                <div className="relative mb-4">
+                  <div className="bg-gradient-to-r from-red-50 to-green-50 p-4 rounded-lg border-l-4 border-sage">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center space-x-2">
+                        <span className="inline-block w-3 h-3 bg-red-400 rounded-full"></span>
+                        <span className="text-sm font-semibold text-warm-gray uppercase tracking-wide">До</span>
+                      </div>
+                      <span className="text-sm text-red-700 font-medium">{story.beforeAfter.before}</span>
+                    </div>
+                    <div className="h-px bg-gradient-to-r from-red-200 via-gray-300 to-green-200 my-3"></div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="inline-block w-3 h-3 bg-green-400 rounded-full"></span>
+                        <span className="text-sm font-semibold text-warm-gray uppercase tracking-wide">Після</span>
+                      </div>
+                      <span className="text-sm text-green-700 font-medium">{story.beforeAfter.after}</span>
+                    </div>
                   </div>
                 </div>
                 

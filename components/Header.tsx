@@ -3,7 +3,60 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Copy, Check } from 'lucide-react';
+
+function CopyableContact({ 
+  icon: Icon, 
+  text, 
+  copyText 
+}: { 
+  icon: React.ComponentType<{ className?: string }>, 
+  text: string, 
+  copyText: string 
+}) {
+  const [copied, setCopied] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(copyText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  return (
+    <div 
+      className="flex items-center space-x-1 text-sage cursor-pointer transition-all duration-200 hover:text-coffee group relative"
+      onClick={handleCopy}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Icon className="w-4 h-4 flex-shrink-0" />
+      <span className="text-sm font-medium select-none min-w-0">
+        {text}
+      </span>
+      <div className={`flex items-center transition-all duration-300 ${
+        isHovered || copied ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+      }`}>
+        {copied ? (
+          <Check className="w-3 h-3 text-green-600 ml-1" />
+        ) : (
+          <Copy className="w-3 h-3 ml-1" />
+        )}
+      </div>
+      
+      {/* Tooltip */}
+      <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-1 px-2 py-1 bg-warm-gray text-white text-xs rounded whitespace-nowrap transition-all duration-200 ${
+        copied ? 'opacity-100 translate-y-0' : isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1 pointer-events-none'
+      }`}>
+        {copied ? 'Скопійовано!' : 'Натисніть, щоб скопіювати'}
+      </div>
+    </div>
+  );
+}
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,14 +105,16 @@ export default function Header() {
 
           {/* Contact Info */}
           <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center space-x-1 text-sage">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+380 67 123 45 67</span>
-            </div>
-            <div className="flex items-center space-x-1 text-sage">
-              <MapPin className="w-4 h-4" />
-              <span className="text-sm font-medium">Київ, вул. Хрещатик 1</span>
-            </div>
+            <CopyableContact 
+              icon={Phone} 
+              text="+380 67 123 45 67" 
+              copyText="+380671234567" 
+            />
+            <CopyableContact 
+              icon={MapPin} 
+              text="info@petrenko-clinic.ua" 
+              copyText="info@petrenko-clinic.ua" 
+            />
           </div>
 
           {/* Mobile menu button */}
@@ -91,14 +146,16 @@ export default function Header() {
               ))}
             </nav>
             <div className="mt-4 pt-4 border-t border-beige space-y-2">
-              <div className="flex items-center space-x-2 text-sage">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+380 67 123 45 67</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sage">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">Київ, вул. Хрещатик 1</span>
-              </div>
+              <CopyableContact 
+                icon={Phone} 
+                text="+380 67 123 45 67" 
+                copyText="+380671234567" 
+              />
+              <CopyableContact 
+                icon={MapPin} 
+                text="info@petrenko-clinic.ua" 
+                copyText="info@petrenko-clinic.ua" 
+              />
             </div>
           </div>
         )}

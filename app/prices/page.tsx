@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PricesList from './PricesList';
 import Link from 'next/link';
 import { 
   Check, 
@@ -12,113 +13,6 @@ import {
 } from 'lucide-react';
 
 export default function Prices() {
-  const services = [
-    {
-      category: 'Консультації та огляди',
-      items: [
-        {
-          name: 'Первинна консультація',
-          duration: '60 хв',
-          price: '800',
-          description: 'Детальний огляд, збір анамнезу, попередній діагноз'
-        },
-        {
-          name: 'Повторна консультація',
-          duration: '45 хв',
-          price: '600',
-          description: 'Контроль лікування, корекція терапії'
-        },
-        {
-          name: 'Профілактичний огляд',
-          duration: '90 хв',
-          price: '1200',
-          description: 'Комплексне обстеження стану здоров\'я'
-        },
-        {
-          name: 'Консультація онлайн',
-          duration: '30 хв',
-          price: '500',
-          description: 'Віддалена консультація через відеозв\'язок'
-        }
-      ]
-    },
-    {
-      category: 'Спеціалізовані послуги',
-      items: [
-        {
-          name: 'Кардіологічна консультація',
-          duration: '60 хв',
-          price: '1000',
-          description: 'ЕКГ, оцінка серцево-судинної системи'
-        },
-        {
-          name: 'Ендокринологічна консультація',
-          duration: '60 хв',
-          price: '950',
-          description: 'Діагностика гормональних порушень'
-        },
-        {
-          name: 'Гастроентерологічна консультація',
-          duration: '60 хв',
-          price: '900',
-          description: 'Обстеження органів травлення'
-        },
-        {
-          name: 'Дерматологічна консультація',
-          duration: '45 хв',
-          price: '750',
-          description: 'Огляд шкіри, діагностика шкірних захворювань'
-        }
-      ]
-    },
-    {
-      category: 'Діагностичні процедури',
-      items: [
-        {
-          name: 'ЕКГ з розшифровкою',
-          duration: '20 хв',
-          price: '300',
-          description: 'Електрокардіограма та інтерпретація результатів'
-        },
-        {
-          name: 'Вимірювання тиску (добовий моніторинг)',
-          duration: '24 години',
-          price: '800',
-          description: 'Холтерівський моніторинг артеріального тиску'
-        },
-        {
-          name: 'Спірометрія',
-          duration: '30 хв',
-          price: '400',
-          description: 'Дослідження функції зовнішнього дихання'
-        }
-      ]
-    },
-    {
-      category: 'Профілактика та вакцинація',
-      items: [
-        {
-          name: 'Вакцинація (без вартості вакцини)',
-          duration: '30 хв',
-          price: '300',
-          description: 'Проведення щеплення, консультація'
-        },
-        {
-          name: 'Складання плану вакцинації',
-          duration: '30 хв',
-          price: '400',
-          description: 'Індивідуальний календар щеплень'
-        },
-        {
-          name: 'Медичний огляд для довідки',
-          duration: '30 хв',
-          price: '500',
-          description: 'Огляд для отримання медичної довідки'
-        }
-      ]
-    }
-  ];
-
   const packages = [
     {
       name: 'Базовий пакет',
@@ -236,45 +130,7 @@ export default function Prices() {
       </section>
 
       {/* Individual Services */}
-      <section className="py-16 bg-beige/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Індивідуальні послуги</h2>
-            <p className="text-lg text-gray-600">Ціни на окремі медичні послуги</p>
-          </div>
-          
-          <div className="space-y-8">
-            {services.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="bg-white rounded-xl shadow-sm p-8">
-                <h3 className="text-2xl font-semibold text-warm-gray mb-6">{category.category}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="border border-gray-100 rounded-lg p-6">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="text-lg font-semibold text-warm-gray">{item.name}</h4>
-                        <div className="text-right">
-                          <div className="text-xl font-bold text-coffee">{item.price} грн</div>
-                          <div className="flex items-center text-sm text-gray-500">
-                            <Clock className="w-4 h-4 mr-1" />
-                            {item.duration}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 mb-4">{item.description}</p>
-                      <Link
-                        href="/contact"
-                        className="text-sage font-medium hover:text-coffee transition-colors"
-                      >
-                        Записатися →
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PricesList />
 
       {/* Payment Info */}
       <section className="py-16">

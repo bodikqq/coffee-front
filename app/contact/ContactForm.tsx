@@ -206,7 +206,7 @@ export default function ContactForm() {
                                 required
                                 value={formData.time}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus_BORDER-transparent transition-colors"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
                             >
                                 <option value="">Оберіть час</option>
                                 {timeSlots.map((t, i) => (
@@ -216,7 +216,7 @@ export default function ContactForm() {
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-warm_GRAY mb-2">
+                        <label htmlFor="message" className="block text-sm font-medium text-warm-gray mb-2">
                             Додаткова інформація
                         </label>
                         <textarea
@@ -225,7 +225,7 @@ export default function ContactForm() {
                             rows={4}
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 border_BORDER-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus_BORDER-transparent transition-colors resize-none"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors resize-none"
                             placeholder="Опишіть ваші скарги або питання..."
                         />
                     </div>
@@ -236,7 +236,7 @@ export default function ContactForm() {
                         <Send className="w-5 h-5" />
                         <span>Надіслати заявку</span>
                     </button>
-                    <p className="text-sm text-gray-500 text_CENTER">
+                    <p className="text-sm text-gray-500 text-center">
                         * Обов'язкові поля для заповнення
                     </p>
                 </form>
