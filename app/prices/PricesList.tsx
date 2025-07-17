@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Clock, Euro, Hryvnia } from 'lucide-react';
+import { Clock, Euro, BatteryWarning as Hryvnia } from 'lucide-react';
 
 type Service = {
   id: number;
