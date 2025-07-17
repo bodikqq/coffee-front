@@ -27,7 +27,7 @@ export default function Home() {
                 <span className="text-coffee">турботою</span> про ваше здоров'я
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Доктор Петренко надає якісні медичні послуги в комфортній атмосфері. 
+                Лікар Ростислав Юрійович надає якісні медичні послуги в комфортній атмосфері. 
                 Індивідуальний підхід до кожного пацієнта та сучасні методи лікування.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -49,13 +49,13 @@ export default function Home() {
             <div className="relative">
               <div className="bg-beige rounded-2xl p-8 shadow-lg">
                 <img
-                  src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Доктор Петренко"
+                  src="/doc-image.jpg"
+                  alt="Лікар Ростислав Кучінка"
                   className="w-full h-96 object-cover rounded-xl"
                 />
                 <div className="mt-6 text-center">
-                  <h3 className="text-xl font-semibold text-warm-gray">Доктор Олена Петренко</h3>
-                  <p className="text-coffee">Сімейний лікар, 15 років досвіду</p>
+                  <h3 className="text-xl font-semibold text-warm-gray">Лікар Ростислав Кучінка</h3>
+                  <p className="text-coffee">Більше 20 років досвіду</p>
                 </div>
               </div>
             </div>

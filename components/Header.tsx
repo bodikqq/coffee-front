@@ -28,7 +28,7 @@ export default function Header() {
               <span className="text-white font-bold text-lg">П</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-warm-gray">Доктор Петренко</h1>
+              <h1 className="text-xl font-bold text-warm-gray">Ростислав Кучінка</h1>
               <p className="text-sm text-coffee">Приватна клініка</p>
             </div>
           </Link>
@@ -54,7 +54,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-1 text-sage">
               <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+380 67 123 45 67</span>
+              <span className="text-sm font-medium">+380 50 507 62 04</span>
             </div>
             <div className="flex items-center space-x-1 text-sage">
               <MapPin className="w-4 h-4" />

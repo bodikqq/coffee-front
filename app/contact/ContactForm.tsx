@@ -87,7 +87,7 @@ export default function ContactForm() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-warm-gray mb-2">
-                                Ім'я та прізвище *
+                                Ваше ім'я *
                             </label>
                             <input
                                 type="text"

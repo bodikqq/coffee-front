@@ -15,14 +15,14 @@ import {
 export default function About() {
   const achievements = [
     {
-      year: '2009',
+      year: '2001',
       title: 'Закінчення медичного університету',
-      description: 'Національний медичний університет імені О.О. Богомольця, спеціальність "Лікувальна справа"'
+      description: 'Медичний факультет УжНУ, спеціальність "Хірургія"'
     },
     {
-      year: '2011',
+      year: '2002',
       title: 'Інтернатура',
-      description: 'Інтернатура з внутрішньої медицини в Київській міській клінічній лікарні'
+      description: 'Інтернатура з хірургії в Ужгродській міській клінічній лікарні'
     },
     {
       year: '2014',
@@ -42,12 +42,10 @@ export default function About() {
   ];
 
   const specializations = [
-    'Загальна терапія та внутрішня медицина',
-    'Сімейна медицина',
-    'Превентивна медицина',
-    'Кардіологія',
-    'Ендокринологія',
-    'Гастроентерологія'
+    'Хірургія',
+    'Пластична хірургія',
+    'Комбустіологія',
+    'Травматологія',
   ];
 
   return (
@@ -60,13 +58,13 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-warm-gray mb-6">
-                Доктор Олена Петренко
+                Лікар Ростислав Кучінка
               </h1>
               <p className="text-xl text-coffee mb-6">
                 Сімейний лікар, спеціаліст з внутрішньої медицини
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Понад 15 років досвіду в медицині. Моя місія — надавати якісну медичну допомогу 
+                Понад 20 років досвіду в медицині. Моя місія — надавати якісну медичну допомогу 
                 з індивідуальним підходом до кожного пацієнта. Вірю, що здоров'я — це не лише 
                 відсутність хвороби, а стан повного фізичного, психічного та соціального благополуччя.
               </p>
@@ -91,7 +89,7 @@ export default function About() {
             <div className="relative">
               <div className="bg-beige rounded-2xl p-8 shadow-lg">
                 <img
-                  src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="/doc-image.jpg"
                   alt="Доктор Олена Петренко"
                   className="w-full h-96 object-cover rounded-xl mb-6"
                 />

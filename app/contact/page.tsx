@@ -38,7 +38,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-warm-gray mb-1">Телефон</h3>
-                    <p className="text-gray-600">+380 67 123 45 67</p>
+                    <p className="text-gray-600">+380 50 507 62 04</p>
                     <p className="text-sm text-gray-500">Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</p>
                   </div>
                 </div>
