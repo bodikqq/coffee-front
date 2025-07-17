@@ -140,76 +140,94 @@ export default function Results() {
         </div>
       </section>
 
-      {/* Success Stories */}
+      {/* Before/After Gallery */}
       <section className="py-16 bg-beige/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Історії успіху</h2>
-            <p className="text-lg text-gray-600">Конкретні результати лікування наших пацієнтів</p>
+            <h2 className="text-3xl font-bold text-warm-gray mb-4">Результати лікування</h2>
+            <p className="text-lg text-gray-600">Фото до та після лікування наших пацієнтів</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {successStories.map((story, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
-                <h3 className="text-xl font-semibold text-warm-gray mb-3">{story.title}</h3>
-                <p className="text-gray-600 mb-4">{story.description}</p>
-                
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                    <span className="text-sm font-medium text-red-700">До:</span>
-                    <span className="text-sm text-red-600">{story.beforeAfter.before}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                    <span className="text-sm font-medium text-green-700">Після:</span>
-                    <span className="text-sm text-green-600">{story.beforeAfter.after}</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-2 text-sm text-gray-500">
-                  <CheckCircle className="w-4 h-4 text-sage" />
-                  <span>{story.duration}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Patient Testimonials */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Відгуки пацієнтів</h2>
-            <p className="text-lg text-gray-600">Що кажуть наші пацієнти про результати лікування</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
-                <div className="flex items-start space-x-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>
-                        <h3 className="font-semibold text-warm-gray">{testimonial.name}</h3>
-                        <p className="text-sm text-gray-500">{testimonial.age}</p>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                        ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Лікування опіків',
+                category: 'Комбустіологія',
+                duration: '3 місяці лікування',
+                beforeImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300'
+              },
+              {
+                title: 'Хірургія кисті',
+                category: 'Хірургія кисті та стопи',
+                duration: '2 місяці реабілітації',
+                beforeImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300'
+              },
+              {
+                title: 'Пластична операція',
+                category: 'Пластична хірургія',
+                duration: '6 місяців відновлення',
+                beforeImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300'
+              },
+              {
+                title: 'Регенеративна терапія',
+                category: 'Регенеративна терапія',
+                duration: '4 місяці лікування',
+                beforeImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300'
+              },
+              {
+                title: 'Відновлення після травми',
+                category: 'Хірургія кисті та стопи',
+                duration: '5 місяців реабілітації',
+                beforeImage: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300'
+              },
+              {
+                title: 'Комплексне лікування',
+                category: 'Комбустіологія',
+                duration: '8 місяців лікування',
+                beforeImage: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=300',
+                afterImage: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300'
+              }
+            ].map((result, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div className="relative">
+                  <div className="grid grid-cols-2">
+                    <div className="relative">
+                      <img
+                        src={result.beforeImage}
+                        alt="До лікування"
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        До
                       </div>
                     </div>
-                    <div className="mb-3">
-                      <span className="inline-block bg-sage/10 text-sage px-2 py-1 rounded text-xs font-medium">
-                        {testimonial.condition}
-                      </span>
+                    <div className="relative">
+                      <img
+                        src={result.afterImage}
+                        alt="Після лікування"
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
+                        Після
+                      </div>
                     </div>
-                    <p className="text-gray-600 italic">"{testimonial.result}"</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-warm-gray mb-2">{result.title}</h3>
+                  <div className="mb-3">
+                    <span className="inline-block bg-sage/10 text-sage px-2 py-1 rounded text-xs font-medium">
+                      {result.category}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <CheckCircle className="w-4 h-4 text-sage" />
+                    <span>{result.duration}</span>
                   </div>
                 </div>
               </div>

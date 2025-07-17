@@ -1,7 +1,8 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from './ContactForm';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Mail, MapPin, Clock } from 'lucide-react';
+import PhoneWithCopy from '@/components/PhoneWithCopy';
 
 export default function ContactPage() {
   return (
@@ -34,11 +35,20 @@ export default function ContactPage() {
                 {/* Phone */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-sage" />
+                    <PhoneWithCopy 
+                      phoneNumber="+380 50 507 62 04" 
+                      className="text-sage"
+                      showNumber={false}
+                      size="md"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-warm-gray mb-1">Телефон</h3>
-                    <p className="text-gray-600">+380 50 507 62 04</p>
+                    <PhoneWithCopy 
+                      phoneNumber="+380 50 507 62 04" 
+                      className="text-gray-600"
+                      size="md"
+                    />
                     <p className="text-sm text-gray-500">Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</p>
                   </div>
                 </div>

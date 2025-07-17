@@ -1,175 +1,14 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { 
-  Check, 
-  Calendar, 
-  Clock, 
-  Heart,
-  Shield,
-  Star,
-  Users
-} from 'lucide-react';
+import { Calendar } from 'lucide-react';
+import PricesList from './PricesList';
 
-export default function Prices() {
-  const services = [
-    {
-      category: 'Консультації та огляди',
-      items: [
-        {
-          name: 'Первинна консультація',
-          duration: '60 хв',
-          price: '800',
-          description: 'Детальний огляд, збір анамнезу, попередній діагноз'
-        },
-        {
-          name: 'Повторна консультація',
-          duration: '45 хв',
-          price: '600',
-          description: 'Контроль лікування, корекція терапії'
-        },
-        {
-          name: 'Профілактичний огляд',
-          duration: '90 хв',
-          price: '1200',
-          description: 'Комплексне обстеження стану здоров\'я'
-        },
-        {
-          name: 'Консультація онлайн',
-          duration: '30 хв',
-          price: '500',
-          description: 'Віддалена консультація через відеозв\'язок'
-        }
-      ]
-    },
-    {
-      category: 'Спеціалізовані послуги',
-      items: [
-        {
-          name: 'Кардіологічна консультація',
-          duration: '60 хв',
-          price: '1000',
-          description: 'ЕКГ, оцінка серцево-судинної системи'
-        },
-        {
-          name: 'Ендокринологічна консультація',
-          duration: '60 хв',
-          price: '950',
-          description: 'Діагностика гормональних порушень'
-        },
-        {
-          name: 'Гастроентерологічна консультація',
-          duration: '60 хв',
-          price: '900',
-          description: 'Обстеження органів травлення'
-        },
-        {
-          name: 'Дерматологічна консультація',
-          duration: '45 хв',
-          price: '750',
-          description: 'Огляд шкіри, діагностика шкірних захворювань'
-        }
-      ]
-    },
-    {
-      category: 'Діагностичні процедури',
-      items: [
-        {
-          name: 'ЕКГ з розшифровкою',
-          duration: '20 хв',
-          price: '300',
-          description: 'Електрокардіограма та інтерпретація результатів'
-        },
-        {
-          name: 'Вимірювання тиску (добовий моніторинг)',
-          duration: '24 години',
-          price: '800',
-          description: 'Холтерівський моніторинг артеріального тиску'
-        },
-        {
-          name: 'Спірометрія',
-          duration: '30 хв',
-          price: '400',
-          description: 'Дослідження функції зовнішнього дихання'
-        }
-      ]
-    },
-    {
-      category: 'Профілактика та вакцинація',
-      items: [
-        {
-          name: 'Вакцинація (без вартості вакцини)',
-          duration: '30 хв',
-          price: '300',
-          description: 'Проведення щеплення, консультація'
-        },
-        {
-          name: 'Складання плану вакцинації',
-          duration: '30 хв',
-          price: '400',
-          description: 'Індивідуальний календар щеплень'
-        },
-        {
-          name: 'Медичний огляд для довідки',
-          duration: '30 хв',
-          price: '500',
-          description: 'Огляд для отримання медичної довідки'
-        }
-      ]
-    }
-  ];
-
-  const packages = [
-    {
-      name: 'Базовий пакет',
-      price: '2500',
-      period: 'на рік',
-      description: 'Основна медична підтримка',
-      features: [
-        '4 планові консультації на рік',
-        'Телефонні консультації',
-        'Базові діагностичні процедури',
-        'Знижка 10% на додаткові послуги'
-      ],
-      popular: false
-    },
-    {
-      name: 'Стандартний пакет',
-      price: '4200',
-      period: 'на рік',
-      description: 'Комплексне медичне обслуговування',
-      features: [
-        '6 планових консультацій на рік',
-        'Онлайн консультації без обмежень',
-        'Повний профілактичний огляд',
-        'Всі діагностичні процедури',
-        'Знижка 15% на додаткові послуги',
-        'Пріоритетний запис'
-      ],
-      popular: true
-    },
-    {
-      name: 'Преміум пакет',
-      price: '6800',
-      period: 'на рік',
-      description: 'VIP медичне обслуговування',
-      features: [
-        'Необмежена кількість консультацій',
-        'Виїзд лікаря додому (2 рази на рік)',
-        'Комплексна диспансеризація',
-        'Всі діагностичні процедури',
-        'Консультації вузьких спеціалістів',
-        'Знижка 20% на додаткові послуги',
-        'Цілодобова підтримка'
-      ],
-      popular: false
-    }
-  ];
-
+export default function PricesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-beige/20">
         <div className="max-w-4xl mx-auto text-center">
@@ -182,167 +21,44 @@ export default function Prices() {
         </div>
       </section>
 
-      {/* Service Packages */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Річні пакети обслуговування</h2>
-            <p className="text-lg text-gray-600">Оберіть оптимальний пакет для вашого здоров'я</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
-              <div key={index} className={`relative bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-8 ${pkg.popular ? 'ring-2 ring-sage' : ''}`}>
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-sage text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Популярний
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold text-warm-gray mb-2">{pkg.name}</h3>
-                  <p className="text-gray-600 mb-4">{pkg.description}</p>
-                  <div className="mb-4">
-                    <span className="text-3xl font-bold text-coffee">{pkg.price}</span>
-                    <span className="text-gray-500 ml-1">грн {pkg.period}</span>
-                  </div>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-sage flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Link
-                  href="/contact"
-                  className={`w-full py-3 px-4 rounded-lg font-semibold text-center block transition-colors ${
-                    pkg.popular 
-                      ? 'bg-sage text-white hover:bg-opacity-90' 
-                      : 'border-2 border-sage text-sage hover:bg-sage hover:text-white'
-                  }`}
-                >
-                  Обрати пакет
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Dynamic Prices List */}
+      <PricesList />
 
-      {/* Individual Services */}
-      <section className="py-16 bg-beige/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Індивідуальні послуги</h2>
-            <p className="text-lg text-gray-600">Ціни на окремі медичні послуги</p>
-          </div>
-          
-          <div className="space-y-8">
-            {services.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="bg-white rounded-xl shadow-sm p-8">
-                <h3 className="text-2xl font-semibold text-warm-gray mb-6">{category.category}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="border border-gray-100 rounded-lg p-6">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="text-lg font-semibold text-warm-gray">{item.name}</h4>
-                        <div className="text-right">
-                          <div className="text-xl font-bold text-coffee">{item.price} грн</div>
-                          <div className="flex items-center text-sm text-gray-500">
-                            <Clock className="w-4 h-4 mr-1" />
-                            {item.duration}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 mb-4">{item.description}</p>
-                      <Link
-                        href="/contact"
-                        className="text-sage font-medium hover:text-coffee transition-colors"
-                      >
-                        Записатися →
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Payment Info */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-warm-gray mb-4">Умови оплати</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center mb-4">
-                <Heart className="w-6 h-6 text-sage" />
-              </div>
-              <h3 className="text-lg font-semibold text-warm-gray mb-3">Способи оплати</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• Готівка в клініці</li>
-                <li>• Банківська картка</li>
-                <li>• Безготівковий розрахунок</li>
-                <li>• Оплата через банк</li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-sage" />
-              </div>
-              <h3 className="text-lg font-semibold text-warm-gray mb-3">Гарантії</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• Фіксовані ціни на весь період лікування</li>
-                <li>• Повернення коштів при скасуванні за 24 години</li>
-                <li>• Безкоштовна консультація при незадовільному результаті</li>
-                <li>• Прозорість усіх витрат</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Special Offers */}
+      {/* Additional Info */}
       <section className="py-16 bg-beige/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-warm-gray mb-6">Спеціальні пропозиції</h2>
+          <h2 className="text-3xl font-bold text-warm-gray mb-6">
+            Прозорі ціни та якісне обслуговування
+          </h2>
+          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            Всі процедури проводяться з використанням сучасного обладнання та новітніх 
+            методик. Доктор Кучінка має багаторічний досвід у всіх зазначених напрямках 
+            та забезпечує високу якість медичної допомоги за справедливими цінами.
+          </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Users className="w-6 h-6 text-sage" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-sage">20+</span>
               </div>
-              <h3 className="text-lg font-semibold text-warm-gray mb-2">Сімейна знижка</h3>
-              <p className="text-gray-600 mb-3">
-                При обслуговуванні всієї родини (від 3 осіб) — знижка 15% на всі послуги
-              </p>
-              <span className="inline-block bg-sage/10 text-sage px-3 py-1 rounded-full text-sm font-medium">
-                Економія до 20%
-              </span>
+              <h3 className="text-lg font-semibold text-warm-gray mb-2">Років досвіду</h3>
+              <p className="text-gray-600">У спеціалізованій медицині</p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Star className="w-6 h-6 text-sage" />
+            <div className="text-center">
+              <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-sage">1000+</span>
               </div>
-              <h3 className="text-lg font-semibold text-warm-gray mb-2">Програма лояльності</h3>
-              <p className="text-gray-600 mb-3">
-                Накопичувальна система знижок для постійних пацієнтів до 25%
-              </p>
-              <span className="inline-block bg-sage/10 text-sage px-3 py-1 rounded-full text-sm font-medium">
-                Вигідно для постійних клієнтів
-              </span>
+              <h3 className="text-lg font-semibold text-warm-gray mb-2">Пацієнтів</h3>
+              <p className="text-gray-600">Успішно проліковано</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-sage">98%</span>
+              </div>
+              <h3 className="text-lg font-semibold text-warm-gray mb-2">Задоволеність</h3>
+              <p className="text-gray-600">Позитивних відгуків</p>
             </div>
           </div>
         </div>
@@ -351,9 +67,9 @@ export default function Prices() {
       {/* CTA Section */}
       <section className="py-16 bg-sage text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-4">Готові інвестувати у своє здоров'я?</h2>
+          <h2 className="text-3xl font-bold mb-4">Потрібна консультація?</h2>
           <p className="text-xl mb-8 opacity-90">
-            Оберіть зручний для вас пакет або окрему послугу та запишіться на прийом
+            Зв'яжіться з нами для детальної консультації та запису на прийом
           </p>
           <Link
             href="/contact"

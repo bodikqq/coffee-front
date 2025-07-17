@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Mail, MapPin, Clock } from 'lucide-react';
+import PhoneWithCopy from './PhoneWithCopy';
 
 export default function Footer() {
   return (
@@ -10,10 +11,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-beige">Контактна інформація</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-sage" />
-                <span>+380 67 123 45 67</span>
-              </div>
+              <PhoneWithCopy 
+                phoneNumber="+380 50 507 62 04" 
+                className="text-white space-x-3"
+                size="md"
+              />
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-sage" />
                 <span>info@petrenko-clinic.ua</span>

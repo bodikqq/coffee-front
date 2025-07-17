@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, MapPin } from 'lucide-react';
+import PhoneWithCopy from './PhoneWithCopy';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,10 +53,11 @@ export default function Header() {
 
           {/* Contact Info */}
           <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center space-x-1 text-sage">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+380 50 507 62 04</span>
-            </div>
+            <PhoneWithCopy 
+              phoneNumber="+380 50 507 62 04" 
+              className="text-sage"
+              size="sm"
+            />
             <div className="flex items-center space-x-1 text-sage">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Київ, вул. Хрещатик 1</span>
@@ -91,10 +93,11 @@ export default function Header() {
               ))}
             </nav>
             <div className="mt-4 pt-4 border-t border-beige space-y-2">
-              <div className="flex items-center space-x-2 text-sage">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+380 67 123 45 67</span>
-              </div>
+              <PhoneWithCopy 
+                phoneNumber="+380 50 507 62 04" 
+                className="text-sage"
+                size="sm"
+              />
               <div className="flex items-center space-x-2 text-sage">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">Київ, вул. Хрещатик 1</span>

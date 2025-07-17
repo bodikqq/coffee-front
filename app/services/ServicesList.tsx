@@ -53,7 +53,7 @@ export default function ServicesList() {
       <div className="max-w-5xl mx-auto">
         <div className="space-y-12">
           {Object.entries(grouped).map(([category, items]) => (
-            <div key={category} className="bg-white rounded-xl shadow-sm p-8">
+            <div key={category} id={category} className="bg-white rounded-xl shadow-sm p-8 scroll-mt-24">
               <h2 className="text-2xl font-bold text-warm-gray mb-8 pb-4 border-b-2 border-sage/20">
                 {category}
               </h2>

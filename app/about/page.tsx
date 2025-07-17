@@ -203,15 +203,64 @@ export default function About() {
         </div>
       </section>
 
-      {/* Quote */}
+      {/* Certificates Section */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <blockquote className="text-2xl font-light text-gray-600 italic mb-6">
-            "Моя мета — не просто лікувати хвороби, а допомагати людям жити повноцінним 
-            та здоровим життям. Кожен пацієнт для мене — це не діагноз, а людина з 
-            унікальною історією та потребами."
-          </blockquote>
-          <cite className="text-lg font-semibold text-coffee">— Доктор Олена Петренко</cite>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-warm-gray mb-4">Сертифікати та кваліфікації</h2>
+            <p className="text-lg text-gray-600">Підтвердження професійної компетентності</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Диплом лікаря-хірурга',
+                institution: 'Ужгородський національний університет',
+                year: '2001',
+                description: 'Спеціальність "Лікувальна справа"'
+              },
+              {
+                title: 'Сертифікат спеціаліста',
+                institution: 'МОЗ України',
+                year: '2014',
+                description: 'Сімейна медицина та загальна практика'
+              },
+              {
+                title: 'Міжнародна сертифікація',
+                institution: 'European Medical Association',
+                year: '2024',
+                description: 'Превентивна медицина'
+              },
+              {
+                title: 'Курс підвищення кваліфікації',
+                institution: 'Національна медична академія',
+                year: '2023',
+                description: 'Сучасні методи діагностики'
+              },
+              {
+                title: 'Сертифікат з хірургії',
+                institution: 'Українська асоціація хірургів',
+                year: '2020',
+                description: 'Мінімально інвазивна хірургія'
+              },
+              {
+                title: 'Спеціалізація з комбустіології',
+                institution: 'Інститут хірургії та трансплантології',
+                year: '2019',
+                description: 'Лікування опіків та відновлення'
+              }
+            ].map((cert, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-sage" />
+                </div>
+                <h3 className="text-lg font-semibold text-warm-gray mb-2">{cert.title}</h3>
+                <p className="text-coffee font-medium mb-1">{cert.institution}</p>
+                <p className="text-sm text-gray-500 mb-3">{cert.year}</p>
+                <p className="text-gray-600 text-sm">{cert.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,15 +1,19 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import PhoneWithCopy from '@/components/PhoneWithCopy';
 import { 
   Heart, 
   Shield, 
   Clock, 
   Award, 
-  Phone, 
   Calendar,
   CheckCircle,
-  Star
+  Star,
+  Stethoscope,
+  Hand,
+  Sparkles,
+  Zap
 } from 'lucide-react';
 
 export default function Home() {
@@ -115,42 +119,51 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-warm-gray mb-4">Основні послуги</h2>
-            <p className="text-lg text-gray-600">Комплексна медична допомога для всієї родини</p>
+            <p className="text-lg text-gray-600">Спеціалізовані медичні послуги</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Загальна терапія',
-                description: 'Діагностика та лікування загальних захворювань',
-                image: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=400'
+                title: 'Комбустіологія',
+                description: 'Лікування опіків та відновлення шкіри',
+                icon: Sparkles,
+                category: 'Комбустіологія'
               },
               {
-                title: 'Профілактичні огляди',
-                description: 'Регулярні обстеження для підтримання здоров\'я',
-                image: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=400'
+                title: 'Хірургія кисті та стопи',
+                description: 'Спеціалізовані операції на кистях та стопах',
+                icon: Hand,
+                category: 'Хірургія кисті та стопи'
               },
               {
-                title: 'Консультації',
-                description: 'Професійні поради щодо здорового способу життя',
-                image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=400'
+                title: 'Пластична хірургія',
+                description: 'Естетична та реконструктивна хірургія',
+                icon: Stethoscope,
+                category: 'Пластична хірургія'
+              },
+              {
+                title: 'Регенеративна терапія',
+                description: 'Сучасні методи відновлення тканин',
+                icon: Zap,
+                category: 'Регенеративна терапія'
               }
             ].map((service, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
+              <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 group">
+                <div className="p-6 text-center">
+                  <div className="w-16 h-16 bg-sage/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-sage/20 transition-colors mx-auto">
+                    <service.icon className="w-8 h-8 text-sage" />
+                  </div>
                   <h3 className="text-xl font-semibold text-warm-gray mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link
-                    href="/services"
+                  <button
+                    onClick={() => {
+                      window.location.href = `/services#${encodeURIComponent(service.category)}`;
+                    }}
                     className="text-sage font-medium hover:text-coffee transition-colors"
                   >
                     Дізнатися більше →
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
@@ -213,13 +226,11 @@ export default function Home() {
               <Calendar className="w-5 h-5" />
               <span>Записатися онлайн</span>
             </Link>
-            <a
-              href="tel:+380671234567"
+            <PhoneWithCopy 
+              phoneNumber="+380 50 507 62 04" 
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-sage transition-colors inline-flex items-center justify-center space-x-2"
-            >
-              <Phone className="w-5 h-5" />
-              <span>+380 67 123 45 67</span>
-            </a>
+              size="md"
+            />
           </div>
         </div>
       </section>
