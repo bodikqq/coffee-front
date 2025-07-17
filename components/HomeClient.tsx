@@ -1,7 +1,9 @@
-// components/HomeServer.jsx
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import PhoneWithCopy from '@/components/PhoneWithCopy';
 import { 
   Heart, 
   Shield, 
@@ -15,7 +17,7 @@ import {
   Zap
 } from 'lucide-react';
 
-export default function HomeServer() {
+export default function HomeClient() {
   const features = [
     {
       icon: Heart,
@@ -124,7 +126,7 @@ export default function HomeServer() {
                   alt="Лікар Ростислав Кучінка"
                   className="w-full h-96 object-cover rounded-xl"
                 />
-                <div className="mt-6 text-center">
+                <div className="mt-6 text-center">  
                   <h3 className="text-xl font-semibold text-warm-gray">Лікар Ростислав Кучінка</h3>
                   <p className="text-coffee">Більше 20 років досвіду</p>
                 </div>
@@ -177,12 +179,14 @@ export default function HomeServer() {
                   </div>
                   <h3 className="text-xl font-semibold text-warm-gray mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link
-                    href={`/services#${encodeURIComponent(service.category)}`}
+                  <button
+                    onClick={() => {
+                      window.location.href = `/services#${encodeURIComponent(service.category)}`;
+                    }}
                     className="text-sage font-medium hover:text-coffee transition-colors"
                   >
                     Дізнатися більше →
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
@@ -229,12 +233,11 @@ export default function HomeServer() {
               <Calendar className="w-5 h-5" />
               <span>Записатися онлайн</span>
             </Link>
-            <Link
-              href="tel:+380505076204"
+            <PhoneWithCopy 
+              phoneNumber="+380 50 507 62 04" 
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-sage transition-colors inline-flex items-center justify-center space-x-2"
-            >
-              +380 50 507 62 04
-            </Link>
+              size="md"
+            />
           </div>
         </div>
       </section>
